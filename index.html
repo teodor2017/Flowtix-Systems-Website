@@ -1,477 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flowtix Systems – Adaptive Traffic Optimization</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flowtix — Software cu AI care rulează operațiuni reale</title>
+<meta name="description" content="Flowtix construiește platforme și automatizări cu AI pentru companii și orașe: suport IT, operațiuni, trafic urban, comerț. În cloud sau on-prem, cu audit complet.">
+<meta property="og:title" content="Flowtix — Software cu AI care rulează operațiuni reale">
+<meta property="og:description" content="Platforme și automatizări cu AI pentru companii și orașe, livrate în luni, nu în ani.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://flowtixsystems.com/">
+<meta property="og:image" content="https://flowtixsystems.com/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --navy: #060C1A; --dark: #0C1426; --card: #111D33;
-    --border: rgba(0,210,255,0.12); --cyan: #00D4FF; --teal: #00B8A0;
-    --white: #F0F4FF; --muted: rgba(200,215,255,0.55);
-    --font-head: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { background: var(--navy); color: var(--white); font-family: var(--font-body); font-weight: 300; overflow-x: hidden; line-height: 1.7; }
-  body::before {
-    content: ''; position: fixed; inset: 0;
-    background-image: linear-gradient(rgba(0,210,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,210,255,0.04) 1px, transparent 1px);
-    background-size: 60px 60px; pointer-events: none; z-index: 0;
-  }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 6vw;
-    background: rgba(6,12,26,0.85); backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .logo { font-family: var(--font-head); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.02em; color: var(--white); }
-  .logo span { color: var(--cyan); }
-  nav ul { display: flex; gap: 2.5rem; list-style: none; }
-  nav a { color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.03em; transition: color 0.2s; }
-  nav a:hover { color: var(--cyan); }
-  .nav-cta { background: var(--cyan); color: var(--navy) !important; padding: 0.55rem 1.4rem; border-radius: 4px; font-weight: 500 !important; }
-  .nav-cta:hover { opacity: 0.85; color: var(--navy) !important; }
-  section { position: relative; z-index: 1; }
-  .container { max-width: 1120px; margin: 0 auto; padding: 0 6vw; }
-
-  /* HERO */
-  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 6vw 6rem; overflow: hidden; }
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--cyan); margin-bottom: 1.8rem; opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--cyan); }
-  h1 { font-family: var(--font-head); font-weight: 800; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; letter-spacing: -0.03em; max-width: 820px; opacity: 0; animation: fadeUp 0.9s 0.35s forwards; }
-  h1 .accent { color: var(--cyan); }
-  h1 .outline { -webkit-text-stroke: 1px rgba(0,210,255,0.5); color: transparent; }
-  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 580px; margin: 1.8rem 0 2.8rem; opacity: 0; animation: fadeUp 0.9s 0.5s forwards; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.9s 0.65s forwards; }
-  .btn-primary { background: var(--cyan); color: var(--navy); border: none; padding: 0.9rem 2.2rem; border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: opacity 0.2s, transform 0.2s; display: inline-block; }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-outline { background: transparent; color: var(--white); border: 1px solid var(--border); padding: 0.9rem 2.2rem; border-radius: 4px; font-family: var(--font-body); font-size: 0.95rem; font-weight: 400; cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
-  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
-  .hero-stats { display: flex; gap: 4rem; margin-top: 5rem; padding-top: 3rem; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
-  .stat-val { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: var(--cyan); line-height: 1; }
-  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.4rem; letter-spacing: 0.03em; }
-  .hero-orb {
-    position: absolute; right: -5vw; top: 50%; transform: translateY(-50%);
-    width: min(600px, 55vw); height: min(600px, 55vw); border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, rgba(0,184,160,0.18), transparent 60%), radial-gradient(circle at 60% 60%, rgba(0,210,255,0.12), transparent 60%);
-    border: 1px solid rgba(0,210,255,0.08); animation: pulse 6s ease-in-out infinite; pointer-events: none;
-  }
-  .hero-orb::after { content: ''; position: absolute; inset: 15%; border-radius: 50%; border: 1px solid rgba(0,210,255,0.12); animation: pulse 6s 1.5s ease-in-out infinite; }
-  @keyframes pulse { 0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; } 50% { transform: translateY(-50%) scale(1.03); opacity: 0.8; } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* SECTION BASICS */
-  .section-label { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem; }
-  .section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--cyan); }
-  h2 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
-
-  /* PROBLEM */
-  #problem { padding: 8rem 0; background: linear-gradient(180deg, var(--navy) 0%, var(--dark) 100%); }
-  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; align-items: start; }
-  .problem-text p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.2rem; }
-  .impact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .impact-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.4rem; transition: border-color 0.3s; }
-  .impact-card:hover { border-color: rgba(0,210,255,0.3); }
-  .impact-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
-  .impact-title { font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
-  .impact-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-  .quote-block { margin-top: 2rem; padding: 1.8rem; border-left: 2px solid var(--cyan); background: rgba(0,210,255,0.04); border-radius: 0 8px 8px 0; }
-  .quote-block p { font-style: italic; color: var(--muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
-  .quote-block cite { font-size: 0.78rem; color: var(--cyan); opacity: 0.8; font-style: normal; }
-
-  /* SOLUTION */
-  #solution { padding: 8rem 0; }
-  .solution-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: center; }
-  .solution-features { display: flex; flex-direction: column; gap: 1.5rem; }
-  .feat-item { display: flex; gap: 1.2rem; align-items: flex-start; }
-  .feat-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--cyan); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 0.75rem; font-weight: 700; color: var(--cyan); margin-top: 2px; }
-  .feat-text h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-  .feat-text p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
-  .flow-diagram { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; position: relative; overflow: hidden; }
-  .flow-diagram::before { content: ''; position: absolute; top: -40px; right: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(0,210,255,0.12), transparent 70%); }
-  .flow-step { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; position: relative; }
-  .flow-step:not(:last-child)::after { content: ''; position: absolute; left: 16px; top: 36px; bottom: -20px; width: 1px; background: linear-gradient(var(--cyan), transparent); opacity: 0.3; }
-  .flow-dot { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: rgba(0,210,255,0.1); border: 1px solid var(--cyan); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; color: var(--cyan); font-family: var(--font-head); font-weight: 700; }
-  .flow-content h4 { font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
-  .flow-content p { font-size: 0.8rem; color: var(--muted); }
-
-  /* HOW IT WORKS */
-  #how { padding: 8rem 0; background: var(--dark); }
-  .how-header { text-align: center; max-width: 620px; margin: 0 auto; }
-  .how-header .section-label { justify-content: center; }
-  .how-header .section-label::before { display: none; }
-  .arch-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
-  .arch-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 2rem; transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
-  .arch-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: 0; transition: opacity 0.3s; }
-  .arch-card:hover { border-color: rgba(0,210,255,0.3); transform: translateY(-4px); }
-  .arch-card:hover::before { opacity: 1; }
-  .arch-tag { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); opacity: 0.8; margin-bottom: 1rem; }
-  .arch-card h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: -0.01em; }
-  .arch-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
-  .arch-card .big-num { position: absolute; bottom: 1rem; right: 1.5rem; font-family: var(--font-head); font-size: 4rem; font-weight: 800; color: rgba(0,210,255,0.05); line-height: 1; }
-
-  /* DIFF */
-  #diff { padding: 8rem 0; }
-  .diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 4rem; }
-  .diff-item { display: flex; gap: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.8rem; transition: border-color 0.3s; }
-  .diff-item:hover { border-color: rgba(0,210,255,0.3); }
-  .diff-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 10px; background: rgba(0,210,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-  .diff-body h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .diff-body p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
-
-  /* RESULTS */
-  #results { padding: 8rem 0; background: var(--dark); overflow: hidden; }
-  .results-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .results-big { font-family: var(--font-head); font-size: 7rem; font-weight: 800; line-height: 0.9; color: var(--cyan); letter-spacing: -0.04em; }
-  .results-desc { font-size: 1.2rem; color: var(--muted); margin: 1rem 0 2rem; }
-  .result-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-  .result-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; color: var(--muted); }
-  .result-list li::before { content: '→'; color: var(--cyan); flex-shrink: 0; margin-top: 1px; }
-  .results-vis { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
-  .bar-chart { display: flex; flex-direction: column; gap: 1.2rem; }
-  .bar-row { display: flex; flex-direction: column; gap: 0.3rem; }
-  .bar-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); }
-  .bar-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--teal), var(--cyan)); animation: barGrow 1.5s ease forwards; }
-  @keyframes barGrow { from { width: 0; } }
-  .chart-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 1.5rem; opacity: 0.7; }
-
-
-
-  /* PILOT */
-  #pilot { padding: 8rem 0; background: var(--dark); }
-  .pilot-box { background: linear-gradient(135deg, rgba(0,210,255,0.06) 0%, rgba(0,184,160,0.06) 100%); border: 1px solid rgba(0,210,255,0.2); border-radius: 16px; padding: 5rem; text-align: center; position: relative; overflow: hidden; }
-  .pilot-box::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,210,255,0.1), transparent 70%); pointer-events: none; }
-  .pilot-box h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1.2rem; }
-  .pilot-box p { color: var(--muted); max-width: 560px; margin: 0 auto 2.5rem; font-size: 1.05rem; }
-  .pilot-kpis { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap; }
-  .kpi { font-family: var(--font-head); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; color: var(--muted); text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; }
-  .kpi::before { content: '◈'; color: var(--cyan); }
-
-  footer { padding: 3rem 6vw; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
-  footer p { font-size: 0.82rem; color: var(--muted); }
-  .footer-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--white); }
-  .footer-logo span { color: var(--cyan); }
-
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-  .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); animation: blink 1.8s ease-in-out infinite; margin-right: 4px; }
-
-  @media (max-width: 860px) {
-    nav ul { display: none; }
-    .problem-grid, .solution-layout, .results-layout, .data-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    .arch-cards, .diff-grid { grid-template-columns: 1fr; }
-    .impact-cards { grid-template-columns: 1fr 1fr; }
-    .hero-stats { flex-wrap: wrap; gap: 2rem; }
-    .pilot-box { padding: 3rem 2rem; }
-    .hero-orb { display: none; }
-  }
-
-  /* CONTACT PAGE */
-  #contact-page {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: var(--navy); overflow-y: auto;
-  }
-  #contact-page.active { display: block; }
-  .contact-wrap {
-    min-height: 100vh; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 6rem 6vw; text-align: center;
-  }
-  .contact-back {
-    position: fixed; top: 1.5rem; left: 6vw; z-index: 210;
-    display: flex; align-items: center; gap: 0.5rem;
-    color: var(--muted); font-size: 0.875rem; cursor: pointer;
-    background: none; border: none; font-family: var(--font-body);
-    transition: color 0.2s; padding: 0;
-  }
-  .contact-back:hover { color: var(--cyan); }
-  .contact-back::before { content: '←'; font-size: 1rem; }
-  .contact-eyebrow {
-    font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--cyan); margin-bottom: 1.5rem;
-    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-  }
-  .contact-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--cyan); }
-  .contact-eyebrow::after { content: ''; display: block; width: 28px; height: 1px; background: var(--cyan); }
-  .contact-title { font-family: var(--font-head); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
-  .contact-subtitle { color: var(--muted); font-size: 1.1rem; max-width: 480px; margin: 0 auto 4rem; }
-  .contact-cards {
-    display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-bottom: 4rem;
-  }
-  .contact-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 2.5rem 3rem; min-width: 260px; transition: border-color 0.3s, transform 0.3s;
-    text-decoration: none; color: var(--white);
-  }
-  .contact-card:hover { border-color: rgba(0,210,255,0.4); transform: translateY(-4px); }
-  .contact-card-icon { font-size: 2rem; margin-bottom: 1.2rem; }
-  .contact-card-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
-  .contact-card-value { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; }
-  .contact-location {
-    font-size: 0.82rem; color: var(--muted); opacity: 0.55;
-    letter-spacing: 0.05em;
-  }
-  .contact-orb {
-    position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    width: 600px; height: 600px; border-radius: 50%; pointer-events: none;
-    background: radial-gradient(circle at 50% 50%, rgba(0,184,160,0.08), transparent 60%);
-    z-index: -1;
-  }
-
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+<a class="skip" href="#continut">Sari la conținut</a>
 
-<nav>
-  <div class="logo">Flow<span>tix</span></div>
-  <ul>
-    <li><a href="#problem">Problem</a></li>
-    <li><a href="#solution">Solution</a></li>
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#pilot" class="nav-cta">Contact Us</a></li>
-  </ul>
-</nav>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/flowtix-mark.png" alt="" width="40" height="40"><span>Flowtix</span></a>
+    <nav class="nav" aria-label="Meniu principal">
+      <a href="#reguli">Cum lucrăm</a>
+      <a href="#construim">Ce construim</a>
+      <a href="produse.html">Produse</a>
+      <a href="#despre">Despre noi</a>
+      <a class="nav-contact" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<section id="hero">
-  <div class="hero-orb"></div>
-  <div class="container">
-    <p class="hero-eyebrow"><span class="live-dot"></span>Real-Time Traffic Intelligence</p>
-    <h1>Smarter Cities<br>Start With <span class="accent">Smarter</span><br><span class="outline">Signals</span></h1>
-    <p class="hero-sub">Flowtix adapts traffic light timings dynamically using live navigation data — no new sensors, no costly hardware, just software-driven flow.</p>
-    <div class="hero-actions">
-      <a href="#pilot" class="btn-primary">Request a Pilot</a>
-      <a href="#solution" class="btn-outline">See How It Works</a>
+<main id="continut">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Software cu AI care rulează operațiuni reale.</h1>
+      <p class="sub">Flowtix construiește platforme și automatizări cu AI pentru companii și orașe: suport IT, operațiuni, trafic urban, comerț. Livrăm în luni, nu în ani, iar totul rulează în cloud sau direct la tine, sub controlul tău.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:flowtixsystems@gmail.com?subject=Discu%C8%9Bie%20Flowtix">Programează o discuție</a>
+        <a class="link-strong" href="produse.html">Vezi produsele</a>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div><div class="stat-val">19%</div><div class="stat-label">Avg. travel time reduction</div></div>
-      <div><div class="stat-val">10–40%</div><div class="stat-label">Range for individual vehicles</div></div>
-      <div><div class="stat-val">0</div><div class="stat-label">New sensors required</div></div>
-      <div><div class="stat-val">Real-time</div><div class="stat-label">Live navigation data</div></div>
-    </div>
+
+    <figure class="ledger">
+      <figcaption>Exemplu: jurnalul unei decizii AI</figcaption>
+      <ol>
+        <li class="entry">
+          <div class="entry-title">Tichet clasificat: Rețea / VPN</div>
+          <dl>
+            <dt>Propus de</dt><dd>AI, model rulat local</dd>
+            <dt>Sursa</dt><dd>3 articole din baza de cunoștințe</dd>
+            <dt>Decizie</dt><dd class="ok">Aprobat de operator</dd>
+          </dl>
+          <div class="sig">semnătură 7f3a…c91e</div>
+        </li>
+        <li class="link" aria-hidden="true"></li>
+        <li class="entry">
+          <div class="entry-title">Răspuns propus angajatului</div>
+          <dl>
+            <dt>Propus de</dt><dd>AI, model rulat local</dd>
+            <dt>Sursa</dt><dd>Ghidul VPN, secțiunea 2</dd>
+            <dt>Decizie</dt><dd class="ok">Trimis după aprobare</dd>
+          </dl>
+          <div class="sig">semnătură 2b90…41d7, legată de 7f3a…c91e</div>
+        </li>
+        <li class="link" aria-hidden="true"></li>
+        <li class="entry">
+          <div class="entry-title">Prioritate ridicată la „Critic”</div>
+          <dl>
+            <dt>Propus de</dt><dd>AI, model rulat local</dd>
+            <dt>Sursa</dt><dd>12 tichete similare în ultima oră</dd>
+            <dt>Decizie</dt><dd><span class="pending">Așteaptă decizia omului</span></dd>
+          </dl>
+          <div class="sig">semnătură c50e…88a2, legată de 2b90…41d7</div>
+        </li>
+      </ol>
+    </figure>
   </div>
 </section>
 
-<section id="problem">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-label">The Problem</p>
-      <h2>Urban traffic is broken —<br>and the cost is real</h2>
-    </div>
-    <div class="problem-grid reveal">
-      <div class="problem-text">
-        <p>Cities across Romania and beyond are running on static traffic signal timings designed decades ago. Meanwhile, urban populations have surged, vehicle counts have exploded, and travel times have tripled on some corridors during peak hours.</p>
-        <p>A journey that should take 10 minutes now takes 30. A 30-minute drive stretches to over an hour. Millions of commuters experience this daily — sometimes more than once.</p>
-        <div class="quote-block">
-          <p>"Intersections are the neuralgic point of the road infrastructure."</p>
-          <cite>— Carolin Treichl, EVP EMENA, Kapsch TrafficCom</cite>
-        </div>
-      </div>
-      <div class="impact-cards">
-        <div class="impact-card"><div class="impact-icon">⏱</div><div class="impact-title">Lost Productivity</div><div class="impact-desc">5 extra minutes per commute = 4.5 hours lost per month, per person</div></div>
-        <div class="impact-card"><div class="impact-icon">🌫</div><div class="impact-title">Pollution</div><div class="impact-desc">Idling vehicles emit CO₂, NO₂ and fine particles into urban air</div></div>
-        <div class="impact-card"><div class="impact-icon">⛽</div><div class="impact-title">Fuel Waste</div><div class="impact-desc">Stop-start traffic raises fuel consumption and household costs</div></div>
-        <div class="impact-card"><div class="impact-icon">🔊</div><div class="impact-title">Urban Stress</div><div class="impact-desc">Noise pollution and commute frustration degrade quality of life</div></div>
-      </div>
-    </div>
+<section class="band">
+  <div class="wrap">
+    <h2>Construim pentru</h2>
+    <ul>
+      <li>Companii de orice mărime</li>
+      <li>Firme de servicii IT</li>
+      <li>Energie, utilități și bănci</li>
+      <li>Primării și poliție locală</li>
+    </ul>
   </div>
 </section>
 
-<section id="solution">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-label">Our Solution</p>
-      <h2>An adaptive layer on top<br>of your existing infrastructure</h2>
-    </div>
-    <div class="solution-layout">
-      <div class="solution-features reveal">
-        <div class="feat-item">
-          <div class="feat-num">1</div>
-          <div class="feat-text"><h3>Real-Time Traffic Data Ingestion</h3><p>Flowtix pulls live data from navigation APIs to build a continuous, accurate picture of traffic density across the full road network.</p></div>
-        </div>
-        <div class="feat-item">
-          <div class="feat-num">2</div>
-          <div class="feat-text"><h3>Traffic Scoring Per Segment</h3><p>Each road segment receives a dynamic traffic score based on vehicle density, queue length, congestion level, and measured speed.</p></div>
-        </div>
-        <div class="feat-item">
-          <div class="feat-num">3</div>
-          <div class="feat-text"><h3>Adaptive Signal Optimization</h3><p>Proprietary algorithms dynamically adjust green/red phase durations across intersections and pedestrian crossings to balance flow and reduce waiting times.</p></div>
-        </div>
-        <div class="feat-item">
-          <div class="feat-num">4</div>
-          <div class="feat-text"><h3>Network-Wide Impact</h3><p>Changes propagate through the road network — freed flow at one intersection reduces pressure on the next, creating a cascade of improvements across the city.</p></div>
-        </div>
+<section id="reguli" class="section">
+  <div class="wrap">
+    <h2 class="h-section">Patru reguli după care construim</h2>
+    <p class="lead" style="margin-top:20px">Nu sunt promisiuni de marketing. Sunt deja scrise în codul platformelor noastre.</p>
+    <div class="rules">
+      <div class="rule">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1F5FBF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
+        <div><h3>Rulează la tine</h3><p>Orice soluție poate fi instalată pe serverele tale. Acolo unde datele nu au voie să plece, și modelul AI rulează local.</p></div>
       </div>
-      <div class="flow-diagram reveal">
-        <div class="flow-step"><div class="flow-dot">📡</div><div class="flow-content"><h4>Traffic Update from Navigation Apps</h4><p>Real-time navigation API feed</p></div></div>
-        <div class="flow-step"><div class="flow-dot">📊</div><div class="flow-content"><h4>Analyze & Score Each Segment</h4><p>Congestion index, queue length, speed</p></div></div>
-        <div class="flow-step"><div class="flow-dot">🧠</div><div class="flow-content"><h4>Apply Optimization Algorithm</h4><p>Local (intersection) + zone-level logic</p></div></div>
-        <div class="flow-step"><div class="flow-dot">🚦</div><div class="flow-content"><h4>Update Signal Timings</h4><p>Commands sent to traffic control system</p></div></div>
-        <div class="flow-step"><div class="flow-dot">🔄</div><div class="flow-content"><h4>Continuous Loop</h4><p>System re-evaluates and re-optimizes in real time</p></div></div>
+      <div class="rule">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1F5FBF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 19h4"/></svg>
+        <div><h3>Fiecare cifră are o sursă</h3><p>Afișăm de unde vine fiecare rezultat și cum a fost calculat. Ce nu a fost evaluat apare ca neevaluat, niciodată ca „în regulă”.</p></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="container">
-    <div class="how-header reveal">
-      <p class="section-label">Architecture</p>
-      <h2>A two-level intelligence engine</h2>
-    </div>
-    <div class="arch-cards">
-      <div class="arch-card reveal"><div class="arch-tag">Level 1</div><h3>Local Intersection Optimization</h3><p>Detects real-time traffic flow around each intersection and adaptively adjusts phase durations for all incoming streets — reducing queue lengths and per-vehicle wait times.</p><div class="big-num">01</div></div>
-      <div class="arch-card reveal"><div class="arch-tag">Level 2</div><h3>Zone-Level Network Analysis</h3><p>Analyses traffic flows across corridors, segments and entire zones — not just at individual intersections. Estimates average speeds, identifies high-density corridors, and coordinates signals across multiple junctions simultaneously to balance macro traffic flows.</p><div class="big-num">02</div></div>
-      <div class="arch-card reveal"><div class="arch-tag">Unique Coverage</div><h3>Pedestrian Crossings & Secondary Streets</h3><p>Unlike most existing systems that focus exclusively on major junctions, Flowtix integrates pedestrian crossings and secondary streets directly into the optimization model — significantly reducing frequent interruptions to traffic flow on main arterial roads.</p><div class="big-num">03</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="diff">
-  <div class="container">
-    <div class="reveal">
-      <p class="section-label">Why Flowtix</p>
-      <h2>Different by design</h2>
-    </div>
-    <div class="diff-grid reveal">
-      <div class="diff-item"><div class="diff-icon">🏗</div><div class="diff-body"><h3>No New Hardware</h3><p>Flowtix works as a pure software layer over your existing traffic management infrastructure. No sensors, no cameras, no costly civil works required.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">📡</div><div class="diff-body"><h3>Floating Car Data at Scale</h3><p>Crowdsourced navigation data from millions of connected users provides traffic visibility across areas where traditional sensor networks have limited or no data — including secondary streets and peripheral zones.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">🌐</div><div class="diff-body"><h3>Scales from Streets to Cities</h3><p>Deploy on a single intersection, a district, or an entire city network. The architecture is designed for incremental, risk-free expansion.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">🔗</div><div class="diff-body"><h3>Compatible with Existing Systems</h3><p>Functions as a standalone optimizer or integrates with existing traffic management platforms and smart city frameworks — no rip-and-replace required.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">⚡</div><div class="diff-body"><h3>Real-Time Adaptability</h3><p>Static signal cycles can't respond to accidents, events, or unexpected surges. Flowtix continuously recalculates and reacts within minutes.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">🤖</div><div class="diff-body"><h3>Extensible Intelligence</h3><p>The algorithmic core is built to incorporate historical data modelling, predictive traffic forecasting, and machine-learning enhancements in future releases.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">🔀</div><div class="diff-body"><h3>Beyond the Intersection</h3><p>Most traffic management systems optimise one junction at a time. Flowtix takes a fundamentally different approach — modelling the entire road network as an interconnected system to distribute flow intelligently across corridors and zones.</p></div></div>
-      <div class="diff-item"><div class="diff-icon">🌊</div><div class="diff-body"><h3>Network-Level Impact</h3><p>Optimisation decisions propagate across the road network — improvements at one node reduce pressure on adjacent ones, creating a cascade effect that raises overall network efficiency well beyond what single-intersection tuning can achieve.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="results">
-  <div class="container">
-    <div class="results-layout">
-      <div class="reveal">
-        <p class="section-label">Impact</p>
-        <div class="results-big">−19%</div>
-        <p class="results-desc">average reduction in travel duration across simulated urban networks</p>
-        <ul class="result-list">
-          <li>Reduced queue lengths at intersections and pedestrian crossings</li>
-          <li>Fewer vehicle stops per journey — lower emissions, lower fuel use</li>
-          <li>Balanced directional traffic flows at congested junctions</li>
-          <li>10–40% improvement range for individual vehicles in simulation</li>
-          <li>Improved overall efficiency of the urban road network</li>
-        </ul>
+      <div class="rule">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1F5FBF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <div><h3>AI-ul propune, omul decide</h3><p>Pornim cu recomandări, trecem la aprobare de către operator și ajungem la automat doar când vrei tu, cu limite de siguranță și revenire automată.</p></div>
       </div>
-      <div class="results-vis reveal">
-        <div class="bar-chart">
-          <div class="bar-row"><div class="bar-label"><span>Avg. Travel Duration</span><span style="color:var(--cyan)">−19%</span></div><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Queue Length</span><span style="color:var(--cyan)">−25%</span></div><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Vehicle Stops</span><span style="color:var(--cyan)">−30%</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Wait Time at Crossings</span><span style="color:var(--cyan)">Reduced</span></div><div class="bar-track"><div class="bar-fill" style="width:65%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Network Efficiency</span><span style="color:var(--cyan)">Improved</span></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
-        </div>
-        <p class="chart-note">Results from Unity-based urban traffic simulation. Real-world results may vary.</p>
+      <div class="rule">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1F5FBF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+        <div><h3>Totul lasă urmă</h3><p>Fiecare acțiune importantă, a omului sau a AI-ului, rămâne într-un jurnal de audit. În platformele enterprise, jurnalul e înlănțuit și semnat, ca nimic să nu se schimbe pe ascuns.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pilot">
-  <div class="container">
-    <div class="pilot-box reveal">
-      <p class="section-label" style="justify-content:center;"><span style="width:0"></span>Next Step</p>
-      <h2>Become a Pilot City Partner</h2>
-      <p>We're seeking forward-thinking municipalities ready to validate adaptive traffic optimization in real-world conditions. The pilot is scoped collaboratively — from a few intersections to a full urban corridor.</p>
-      <div class="pilot-kpis">
-        <div class="kpi">Average vehicle delay</div>
-        <div class="kpi">Queue lengths at junctions</div>
-        <div class="kpi">Corridor travel time</div>
-        <div class="kpi">Average network speed</div>
+<section id="construim" class="section">
+  <div class="wrap">
+    <h2 class="h-section">Ce construim</h2>
+    <div class="rows">
+      <div class="row">
+        <h3>Platforme de operațiuni IT</h3>
+        <div><p>Service desk ITIL, inventar IT, guvernanța accesului și conformitate NIS2, într-o singură platformă pe care o configurezi fără cod.</p><p class="example">Exemplu: OptiTSM.</p></div>
       </div>
-      <button class="btn-primary" onclick="openContact()">Get In Touch</button>
+      <div class="row">
+        <h3>Agenți AI pentru angajați și clienți</h3>
+        <div><p>Asistenți care răspund din documentele tale, în Teams, pe email sau la telefon, deschid tichete și predau unui om tot ce are nevoie de el.</p><p class="example">Exemplu: OptiAI.</p></div>
+      </div>
+      <div class="row">
+        <h3>Decizii pe date în timp real</h3>
+        <div><p>Date live comparate cu istoricul, anomalii semnalate la timp și predicții verificate zilnic față de ce s-a întâmplat de fapt.</p><p class="example">Exemplu: Flowtix Traffic.</p></div>
+      </div>
+      <div class="row">
+        <h3>Automatizări și aplicații la comandă</h3>
+        <div><p>Orice proces care se repetă: fluxuri de aprobare, integrări între sisteme, portaluri și magazine online.</p><p class="example">Exemplu: magazinul B2B și B2C pentru un distribuitor HORECA.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="footer-logo">Flow<span>tix</span> Systems</div>
-  <p>Adaptive Traffic Optimization · Smart Mobility for Romanian Cities</p>
-  <p style="font-size:0.75rem;">© 2025 Flowtix Systems</p>
+<section class="section">
+  <div class="wrap">
+    <div class="speed">
+      <div class="speed-copy">
+        <h2>Livrăm în luni ce durează de obicei ani</h2>
+        <p>Construim cu agenți AI în fiecare zi, cu teste automate și revizuire umană la fiecare pas. Așa ajunge o echipă mică să livreze platforme enterprise întregi.</p>
+        <p>Aceeași abordare o aplicăm proceselor tale: din 8 ore de muncă, AI-ul preia 4.</p>
+      </div>
+      <ul class="facts">
+        <li><strong>Patru produse</strong><span>construite în primele cinci luni</span></li>
+        <li><strong>Peste 80.000 €</strong><span>în contracte semnate</span></li>
+        <li><strong>4.300+ teste automate</strong><span>și 355.000 de linii de cod într-o singură platformă</span></li>
+        <li><strong>−31% timp de așteptare</strong><span>în pilotul de trafic de la Brașov, în trafic real</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="head-row">
+      <h2 class="h-section">Produsele noastre</h2>
+      <a class="link-strong" href="produse.html">Detalii despre fiecare produs</a>
+    </div>
+    <div class="teasers">
+      <a class="teaser" href="produse.html#optitsm"><span class="teaser-name">OptiTSM</span><span class="teaser-desc">Platformă de management al serviciilor IT, alternativă suverană la ServiceNow.</span><span class="status live">În producție</span></a>
+      <a class="teaser" href="produse.html#optiai"><span class="teaser-name">OptiAI</span><span class="teaser-desc">Agent AI pentru suport IT, conectat la sistemul de tichete.</span><span class="status live">În producție la clienți</span></a>
+      <a class="teaser" href="produse.html#traffic"><span class="teaser-name">Flowtix Traffic</span><span class="teaser-desc">Optimizarea semafoarelor din date de navigație, fără senzori noi.</span><span class="status">Pilot finalizat la Brașov</span></a>
+      <a class="teaser" href="produse.html#magazin"><span class="teaser-name">Magazin B2B și B2C</span><span class="teaser-desc">Comerț online complet, cu căutare asistată de AI.</span><span class="status">Livrare în etape</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="despre" class="section section-last">
+  <div class="wrap about">
+    <h2 class="h-section">Despre noi</h2>
+    <div class="about-copy">
+      <p>Flowtix este o companie românească de software, fondată în 2026 la București. Am pornit de la traficul urban, unde o decizie greșită a unui algoritm se vede imediat în stradă. De acolo am învățat să construim AI care se verifică singur și care poate fi oprit oricând.</p>
+      <p>Aceeași disciplină o aplicăm acum în operațiuni IT, suport și comerț, pentru clienți care au nevoie să știe exact ce face software-ul lor și de ce.</p>
+      <ul class="team">
+        <li><strong>Teodor-Bogdan Togan</strong><span>Founder &amp; CEO</span></li>
+        <li><strong>Bogdan Petrescu</strong><span>Co-founder</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-copy">
+      <h2>Ce proces vrei să automatizezi?</h2>
+      <p>Spune-ne pe scurt. Îți răspundem cu o propunere concretă: ce construim, în cât timp și unde rulează.</p>
+    </div>
+    <div class="contact-list">
+      <a class="btn btn-light" href="mailto:flowtixsystems@gmail.com?subject=Discu%C8%9Bie%20Flowtix">Programează o discuție</a>
+      <a href="mailto:flowtixsystems@gmail.com">flowtixsystems@gmail.com</a>
+      <a href="tel:+40741782060">+40 741 782 060</a>
+      <a href="https://www.linkedin.com/company/flowtix-systems" rel="noopener">LinkedIn</a>
+      <span>Drumul Taberei, București</span>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <strong>© 2026 FLOWTIX S.R.L.</strong>
+    <span>București, România</span>
+    <span>flowtixsystems.com</span>
+  </div>
 </footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.querySelector(e.target.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
-<!-- CONTACT PAGE OVERLAY -->
-<div id="contact-page">
-  <div class="contact-orb"></div>
-  <button class="contact-back" onclick="closContact()">Back to site</button>
-  <div class="contact-wrap">
-    <p class="contact-eyebrow">Get In Touch</p>
-    <h2 class="contact-title">Let's talk traffic.</h2>
-    <p class="contact-subtitle">Reach out to discuss a pilot, a partnership, or just to learn more about Flowtix Systems.</p>
-    <div class="contact-cards">
-      <a class="contact-card" href="mailto:flowtixsystems@gmail.com">
-        <div class="contact-card-icon">✉️</div>
-        <div class="contact-card-label">Email</div>
-        <div class="contact-card-value">flowtixsystems@gmail.com</div>
-      </a>
-      <a class="contact-card" href="tel:+40741782060">
-        <div class="contact-card-icon">📞</div>
-        <div class="contact-card-label">Phone</div>
-        <div class="contact-card-value">+40 741 782 060</div>
-      </a>
-      <a class="contact-card" href="https://www.linkedin.com/company/flowtix-systems" target="_blank" rel="noopener">
-        <div class="contact-card-icon">💼</div>
-        <div class="contact-card-label">LinkedIn</div>
-        <div class="contact-card-value">Flowtix Systems</div>
-      </a>
-    </div>
-    <p class="contact-location">📍 Bucharest, Romania</p>
-  </div>
-</div>
-
-<script>
-
-  function openContact() {
-    document.getElementById('contact-page').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closContact() {
-    document.getElementById('contact-page').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closContact();
-  });
-
-</script>
 </body>
 </html>

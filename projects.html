@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Flowtix — Work smarter. Automate your work with AI.</title>
-<meta name="description" content="Flowtix builds AI automations for businesses. If your team does it every day, we can automate it. Support, operations, reports, data entry, approvals.">
+<title>Our projects — Flowtix</title>
+<meta name="description" content="OptiAI, OptiTSM, Flowtix Traffic and an online store: what each Flowtix project does, the results, and what runs where.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -143,10 +143,10 @@ table.results{width:100%;border-collapse:collapse;font-size:17px}
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/flowtix-mark.png" alt="" width="38" height="38"><span>Flowtix</span></a>
     <nav class="nav" aria-label="Main">
-      <a href="#automate">What we automate</a>
-      <a href="#proof">Proof</a>
-      <a href="#how">How it works</a>
-      <a href="projects.html">Projects</a>
+      <a href="index.html#automate">What we automate</a>
+      <a href="index.html#proof">Proof</a>
+      <a href="index.html#how">How it works</a>
+      <a href="#" aria-current="page">Projects</a>
       <a class="cta" href="#contact">Talk to us</a>
     </nav>
   </div>
@@ -154,69 +154,137 @@ table.results{width:100%;border-collapse:collapse;font-size:17px}
 
 <main id="main">
 
-<section class="hero">
+<section class="intro">
   <div class="wrap">
-    <h1>Work smarter.<br><span class="go">Automate your work with AI.</span></h1>
-    <p class="sub"><strong>We build AI automations for businesses.</strong> If your team does it every day, we can automate it. 8 hours of work, done in 4.</p>
-    <div class="actions">
-      <a class="btn btn-go" href="mailto:flowtixsystems@gmail.com?subject=What%20takes%20too%20long">Tell us what takes too long</a>
-      <a class="btn btn-ghost" href="#proof">See what we've built</a>
-    </div>
+    <h1>Our projects</h1>
+    <p class="lead">Four products in our first months. Built, shipped, running.</p>
+    <nav class="jump" aria-label="Projects">
+      <a href="#optiai">OptiAI</a><a href="#optitsm">OptiTSM</a><a href="#traffic">Flowtix Traffic</a><a href="#store">Online store</a>
+    </nav>
   </div>
 </section>
 
+<div class="wrap">
 
-
-<section id="automate" class="section">
-  <div class="wrap">
-    <h2 class="h2">If your team does it every day, we can automate it.</h2>
-    <p class="lead">Any business. Any process that repeats. Here's what it looks like.</p>
-    <div class="pairs">
-      <div class="pair"><p class="before">The same IT questions, all day long</p><p class="after">An AI agent answers in Teams, by email and by phone</p></div>
-      <div class="pair"><p class="before">Invoices typed into the ERP by hand</p><p class="after">Data extracted and entered automatically</p></div>
-      <div class="pair"><p class="before">Reports rebuilt every week</p><p class="after">Generated and delivered on schedule</p></div>
-      <div class="pair"><p class="before">Approvals chased over email</p><p class="after">Requests routed, reminded and closed</p></div>
-      <div class="pair"><p class="before">Orders handled one by one</p><p class="after">Store, payments, e-invoicing and couriers run as one flow</p></div>
-      <div class="pair"><p class="before">Traffic lights on fixed timers</p><p class="after">Timings tuned from live navigation data, no new sensors</p></div>
-    </div>
+<section id="optiai" class="project">
+  <div class="p-side">
+    <h2>OptiAI</h2>
+    <span class="status">In production at clients</span>
+    <div><div class="label">Built with</div><p>.NET, Microsoft Teams, Claude, Freshservice, SharePoint, Confluence, Azure</p></div>
+  </div>
+  <div class="p-main">
+    <p class="big">An AI IT-support agent wired into ticketing. Employees ask in Microsoft Teams, by phone or by email. The agent answers from their company's own documentation and opens or enriches tickets in Freshservice, so engineers get fewer, better tickets.</p>
+    <h3>What it does</h3>
+    <ul>
+      <li>Answers in Teams, in personal and team chats, with files. One app serves every client company.</li>
+      <li>Picks up the phone: a number per client, the caller speaks, the agent answers from the same knowledge.</li>
+      <li>Reads each client's docs synced from Confluence and SharePoint. End-user and engineer docs are kept apart.</li>
+      <li>Opens tickets from chat and from per-client request forms, and sends self-help tips on email tickets.</li>
+      <li>Leaves engineers a private note with likely fixes on every new ticket.</li>
+      <li>Finds documentation gaps: groups tickets by missing topic and drafts the article for engineers to review.</li>
+    </ul>
+    <h3>You stay in control</h3>
+    <ul>
+      <li>Access is matched strictly by client email domain. Each company sees only its own docs and forms.</li>
+      <li>Low-confidence answers go to engineers for review, not to the user.</li>
+      <li>Dashboard with chat logs by company, user and period, tickets, feedback and call logs, with admin roles.</li>
+    </ul>
   </div>
 </section>
 
-<section id="proof" class="section">
-  <div class="wrap">
-    <h2 class="h2">Built. Shipped. Running.</h2>
-    <p class="lead">Four products in our first months. Here's the proof.</p>
-    <div class="proof">
-      <div class="card"><h3>OptiAI</h3><p>AI IT support agent. Answers employees from their company's docs and opens tickets in Freshservice.</p><span class="status">In production at clients</span></div>
-      <div class="card"><h3>OptiTSM</h3><p>IT service management platform built to compete with ServiceNow.</p><span class="big">355K</span><p>lines of code, 4,300+ automated tests</p><span class="status">Live: dev, test, prod</span></div>
-      <div class="card"><h3>Flowtix Traffic</h3><p>Traffic signal optimization from live navigation data.</p><span class="big">−31%</span><p>average waiting time, Brașov field pilot</p><span class="status soon">Pilot completed</span></div>
-      <div class="card"><h3>Online store</h3><p>B2B and B2C store for a food distributor: 1,024 products, card payments, e-invoicing, couriers, AI search.</p><span class="status soon">Delivered in phases</span></div>
+<section id="optitsm" class="project">
+  <div class="p-side">
+    <h2>OptiTSM</h2>
+    <span class="status">Live: dev, test, prod</span>
+    <div><div class="label">Built with</div><p>Python, FastAPI, PostgreSQL 16, Docker, Azure, Entra ID. On-prem LLM or cloud.</p></div>
+  </div>
+  <div class="p-main">
+    <p class="big">A sovereign ServiceNow alternative. ITSM and CMDB in one codebase for the whole IT-service lifecycle, on-prem or cloud, AI-native, built for the regulated mid-market: energy, utilities, banks, public sector, NIS2.</p>
+    <div class="stats">
+      <div><strong>355K</strong><span>lines of code</span></div>
+      <div><strong>4,300+</strong><span>automated tests</span></div>
+      <div><strong>15+</strong><span>connectors: Entra ID, AD, SCCM, Azure</span></div>
+      <div><strong>30</strong><span>CI classes in the CMDB</span></div>
     </div>
-    <div class="banner">€80K+ in signed contracts before raising a single euro.</div>
-    <div class="results-strip" id="brasov">
-      <div class="rs-head"><h3>Measured on a real street: the Brașov pilot</h3><p>Flowtix Traffic, one intersection, three weekdays, before vs. after</p></div>
-      <div class="nums">
-        <div class="num"><strong>−31%</strong><span>average waiting time</span><small>37 s → 25.5 s</small></div>
-        <div class="num"><strong>−34%</strong><span>peak waiting time</span><small>101 s → 66.5 s</small></div>
-        <div class="num"><strong>−41%</strong><span>traffic imbalance between approaches</span><small>46% → 27%</small></div>
-        <div class="num"><strong>−15%</strong><span>peak travel time through the intersection</span><small>229 s → 194.5 s</small></div>
-      </div>
-      <p class="rs-note">Real traffic, optimized signal plans, no new sensors. <a href="projects.html#traffic">Full results and method</a></p>
-    </div>
+    <h3>What's in the platform</h3>
+    <ul>
+      <li>Service desk (ITIL): incidents, requests, problems, changes with CAB, security incidents with NIS2 tagging.</li>
+      <li>SLA and OLA: business calendars, pauses, breach alerts, resolution-time prediction.</li>
+      <li>Self-service portal, Romanian-first: catalog with approvals, knowledge base, CSAT surveys, virtual agent.</li>
+      <li>CMDB and discovery: dependency graph, impact analysis, multi-source reconciliation.</li>
+      <li>Assets and licences: custody lifecycle, software entitlements vs. installs, renewals.</li>
+      <li>IT operations: monitoring events, correlation rules, service health map.</li>
+      <li>Low-code platform: App Studio tables, workflow designer, integration hub, report builder.</li>
+      <li>AI-native: auto-routing, summaries, KB-grounded replies, PII redaction, on-prem LLM.</li>
+    </ul>
+    <h3>You stay in control</h3>
+    <ul>
+      <li>Row-level tenant isolation, hash-chained audit, SSO with MFA, signed offline licences.</li>
+      <li>AI is off until you switch it on, and it can run on a local model.</li>
+    </ul>
   </div>
 </section>
 
-<section id="how" class="section">
-  <div class="wrap">
-    <h2 class="h2">How it works</h2>
-    <div class="steps">
-      <div class="step"><h3>Tell us what takes too long.</h3><p>One call. We look at the process with your team and find the hours.</p></div>
-      <div class="step"><h3>We build it. In weeks, not years.</h3><p>You see it working on your data, not in a slide deck.</p></div>
-      <div class="step"><h3>It runs. You stay in control.</h3><p>Cloud or your own servers. Every number shows its source. Nothing important happens without a human saying yes.</p></div>
+<section id="traffic" class="project">
+  <div class="p-side">
+    <h2>Flowtix Traffic</h2>
+    <span class="status soon">Field pilot completed in Brașov</span>
+    <div><div class="label">Built with</div><p>.NET 8, Docker, live navigation data, OpenStreetMap, GTFS-Realtime, MQTT, DATEX II</p></div>
+  </div>
+  <div class="p-main">
+    <p class="big">Smarter green lights from live navigation data. A software layer over any intersection, with no new sensors in the road. The product Flowtix started with.</p>
+    <h3>Results from the Brașov pilot</h3>
+    <div class="tbl-wrap">
+      <table class="results">
+        <thead><tr><th scope="col">Indicator</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Change</th></tr></thead>
+        <tbody>
+          <tr><td>Average waiting time</td><td>37 s</td><td>25.5 s</td><td class="gain">−31%</td></tr>
+          <tr><td>Peak waiting time</td><td>101 s</td><td>66.5 s</td><td class="gain">−34%</td></tr>
+          <tr><td>Traffic imbalance between approaches</td><td>46%</td><td>27%</td><td class="gain">−41%</td></tr>
+          <tr><td>Peak travel time through the intersection</td><td>229 s</td><td>194.5 s</td><td class="gain">−15%</td></tr>
+          <tr><td>Average travel time through the intersection</td><td>165 s</td><td>153.5 s</td><td class="gain">−7%</td></tr>
+        </tbody>
+      </table>
     </div>
+    <p class="note">One intersection (Strada Lungă × Nicolae Iorga), three weekdays compared before and after the optimized signal plans went live. Real traffic, in sun, rain and light snow. Waiting time dropped on every test day: −36%, −23%, −37%.</p>
+    <h3>What it does</h3>
+    <ul>
+      <li>Measures delay on every approach from live traffic data, including streets with no signals.</li>
+      <li>Recalculates cycle, green splits and green-wave offsets, with public transport priority.</li>
+      <li>Detects incidents against history, looks for the cause and suggests actions for dispatch, local police and city hall.</li>
+      <li>Smart-city modules: air quality, variable message signs, parking guidance, DATEX II export.</li>
+    </ul>
+    <h3>You stay in control</h3>
+    <ul>
+      <li>Predictions are scored against reality every day, and the accuracy is shown.</li>
+      <li>Control goes from recommendation, to operator approval, to autonomous, with safety limits, rollback and an emergency stop.</li>
+      <li>Runs on-premises, with a daily cost cap on traffic data and an audit trail for every command.</li>
+    </ul>
   </div>
 </section>
 
+<section id="store" class="project">
+  <div class="p-side">
+    <h2>Online store</h2>
+    <span class="status soon">Delivered in phases</span>
+    <div><div class="label">Built with</div><p>ASP.NET Core 8, SQLite</p></div>
+  </div>
+  <div class="p-main">
+    <p class="big">A B2B and B2C online store built from scratch for a food distributor serving restaurants and shops: storefront, company accounts and a full back office.</p>
+    <h3>What it does</h3>
+    <ul>
+      <li>1,024 products in 63 subcategories, Excel import, live stock.</li>
+      <li>Company accounts by tax ID, group discounts and price rules.</li>
+      <li>Card payments (NETOPIA, EuPlătesc), cash on delivery, bank transfer.</li>
+      <li>E-invoicing (FGO, Oblio, SmartBill) with SAGA accounting export.</li>
+      <li>Couriers: Sameday and FAN Courier, with AWB tracking.</li>
+      <li>AI-assisted search and product recommendations.</li>
+      <li>SEO, GDPR, staff roles (warehouse, sales, finance), daily backups.</li>
+    </ul>
+  </div>
+</section>
+
+</div>
 </main>
 
 <section id="contact" class="contact">

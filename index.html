@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Flowtix — Work smarter. Automate your work with AI.</title>
-<meta name="description" content="Flowtix builds AI automations for businesses. If your team does it every day, we can automate it. Support, operations, reports, data entry, approvals.">
+<meta name="description" content="Flowtix builds AI automations and new AI products for businesses. If your team does it every day, we can automate it. If the product you need doesn't exist yet, we build it.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,6 +54,15 @@ p{text-wrap:pretty}
 .btn-go{background:var(--go);color:var(--go-ink)}
 .btn-go:hover{background:#fff;color:var(--go-ink)}
 .btn-ghost{color:var(--ink);text-underline-offset:6px}
+
+/* why */
+.why{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.why .wrap{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px)}
+.why h2{font-size:clamp(34px,4.6vw,64px);line-height:1.02;max-width:900px}
+.why .lead{font-size:21px;max-width:760px}
+.three{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:32px 48px}
+.three h3{font-size:24px;color:var(--go)}
+.three p{margin-top:8px;color:var(--muted)}
 
 /* before / after */
 .section{padding-top:clamp(80px,10vw,140px)}
@@ -144,6 +153,7 @@ table.results{width:100%;border-collapse:collapse;font-size:17px}
     <a class="brand" href="index.html"><img src="assets/flowtix-mark.png" alt="" width="38" height="38"><span>Flowtix</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#automate">What we automate</a>
+      <a href="#build">What we build</a>
       <a href="#proof">Proof</a>
       <a href="#how">How it works</a>
       <a href="projects.html">Projects</a>
@@ -157,7 +167,7 @@ table.results{width:100%;border-collapse:collapse;font-size:17px}
 <section class="hero">
   <div class="wrap">
     <h1>Work smarter.<br><span class="go">Automate your work with AI.</span></h1>
-    <p class="sub"><strong>We build AI automations for businesses.</strong> If your team does it every day, we can automate it. 8 hours of work, done in 4.</p>
+    <p class="sub"><strong>We build AI automations and new AI products for businesses.</strong> If your team does it every day, we can automate it. If the product you need doesn't exist yet, we build it. 8 hours of work, done in 4.</p>
     <div class="actions">
       <a class="btn btn-go" href="mailto:flowtixsystems@gmail.com?subject=What%20takes%20too%20long">Tell us what takes too long</a>
       <a class="btn btn-ghost" href="#proof">See what we've built</a>
@@ -167,6 +177,18 @@ table.results{width:100%;border-collapse:collapse;font-size:17px}
 
 
 
+
+<section class="why" aria-label="Why AI">
+  <div class="wrap">
+    <h2>AI isn't new anymore. It's necessary.</h2>
+    <p class="lead">The question isn't whether to use AI. It's what it can actually do for you and your business. We see three things:</p>
+    <div class="three">
+      <div><h3>Automate</h3><p>Take the work that repeats every day off your team's hands: support, data entry, reports, approvals.</p></div>
+      <div><h3>Know</h3><p>Pull information out of your systems that you couldn't see before, in real time, not at the end of the month.</p></div>
+      <div><h3>Decide</h3><p>Connect the dots across your data and get advice you can act on today, with the reasoning shown.</p></div>
+    </div>
+  </div>
+</section>
 <section id="automate" class="section">
   <div class="wrap">
     <h2 class="h2">If your team does it every day, we can automate it.</h2>
@@ -182,6 +204,18 @@ table.results{width:100%;border-collapse:collapse;font-size:17px}
   </div>
 </section>
 
+
+<section id="build" class="section">
+  <div class="wrap">
+    <h2 class="h2">We automate what repeats. We build what doesn't exist yet.</h2>
+    <p class="lead">Some problems have no product on the market. Then we invent one, and ship it.</p>
+    <div class="proof" style="grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))">
+      <div class="card"><h3>Flowtix Traffic</h3><p>One of the very few traffic platforms that optimize signals from live navigation data, with no sensors in the road. Cities get adaptive control where only hardware-heavy systems existed before.</p><span class="status">Our own invention</span></div>
+      <div class="card"><h3>OptiTSM</h3><p>A complete IT service management platform built from scratch to compete with ServiceNow: service desk, CMDB, low-code apps and on-prem AI in one codebase.</p><span class="status">Built from zero</span></div>
+      <div class="card"><h3>Flowtix IT Agent</h3><p>An AI support agent that answers in Teams, by phone and by email, and fixes its own documentation from the tickets it sees.</p><span class="status">In production at clients</span></div>
+    </div>
+  </div>
+</section>
 <section id="proof" class="section">
   <div class="wrap">
     <h2 class="h2">Built. Shipped. Running.</h2>
